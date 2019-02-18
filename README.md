@@ -31,10 +31,10 @@ There are several examples for running the library in the Examples section.
 Requirements
 ============
 The module blist is required for running as well as numpy and opencv2.
-These libraries can easily be installed with
-pip install numpy
-pip install blist
-pip install opencv-python
+These libraries can easily be installed with::
+    pip install numpy
+    pip install blist
+    pip install opencv-python
 
 opencv2 and numpy windows binaries and setup wheels can also be downloaded from
 Christoph Gohlkes Python page for windows:
