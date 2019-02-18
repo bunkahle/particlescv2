@@ -328,13 +328,13 @@ class Particle:
                 endpoint = [self.pos[0] + linevec[0], self.pos[1] + linevec[1]]
                 # pygame.draw.aaline(display, self.colour, self.pos, endpoint)
                 # cv.Line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour, lineType=cv.CV_AA)
-                cv2.line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour, lineType=cv2.CV_AA)
+                cv2.line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour)
             
         elif self.drawtype == DRAWTYPE_SCALELINE:  # Scaling line (scales with velocity)
             endpoint = [self.pos[0] + self.velocity[0], self.pos[1] + self.velocity[1]]
             # pygame.draw.aaline(display, self.colour, self.pos, endpoint)
             # cv.Line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour, lineType=cv.CV_AA)
-            cv2.line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour, lineType=cv2.CV_AA)
+            cv2.line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour)
             
         elif self.drawtype == DRAWTYPE_BUBBLE:  # Bubble
             if self.radius >= 1.0:
@@ -1624,7 +1624,7 @@ class BoundaryLine(Obstacle):
         
         # pygame.draw.aalines(display, self.colour, True, self.edgecontacts)
         # cv.Line(display, (int(self.edgecontacts[0][0]), int(self.edgecontacts[0][1])), (int(self.edgecontacts[1][0]), int(self.edgecontacts[1][1])), self.colour, lineType=cv.CV_AA)
-        cv2.line(display, (int(self.edgecontacts[0][0]), int(self.edgecontacts[0][1])), (int(self.edgecontacts[1][0]), int(self.edgecontacts[1][1])), self.colour, lineType=cv2.CV_AA)
+        cv2.line(display, (int(self.edgecontacts[0][0]), int(self.edgecontacts[0][1])), (int(self.edgecontacts[1][0]), int(self.edgecontacts[1][1])), self.colour)
     
     def Update(self):
         newvars = InterpolateKeyframes(self.curframe, {'pos_x':self.pos[0], 'pos_y':self.pos[1], 'colour_r':self.colour[0], 'colour_g':self.colour[1], 'colour_b':self.colour[2], 'bounce':self.bounce, 'normal_x':self.normal[0], 'normal_y':self.normal[1]}, self.keyframes)
