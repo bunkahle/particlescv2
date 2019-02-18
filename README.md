@@ -32,6 +32,7 @@ Requirements
 ============
 The module blist is required for running as well as numpy and opencv2.
 These libraries can easily be installed with::
+
     pip install numpy
     pip install blist
     pip install opencv-python
