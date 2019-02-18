@@ -170,8 +170,8 @@ def Update():
     if curframe > text_border:
         col = curframe-text_border
         if col>255: col = 255
-        cv2.putText(screen, windowname,(100,300), cv2.FONT_HERSHEY_PLAIN, 3, (col,col,col), 2, lineType=cv2.CV_AA)
-        cv2.putText(screen, windowname,(102,302), cv2.FONT_HERSHEY_PLAIN, 3, (0,col,0), 2, lineType=cv2.CV_AA)
+        cv2.putText(screen, windowname,(100,300), cv2.FONT_HERSHEY_PLAIN, 3, (col,col,col), 2)
+        cv2.putText(screen, windowname,(102,302), cv2.FONT_HERSHEY_PLAIN, 3, (0,col,0), 2)
     curframe += 1
 
 def Redraw():
