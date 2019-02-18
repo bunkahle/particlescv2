@@ -30,7 +30,7 @@ There are several examples for running the library in the Examples section.
 
 Requirements
 ============
-The blist is required for running as well as numpy and opencv2.
+The module blist is required for running as well as numpy and opencv2.
 These libraries can easily be installed with
 pip install numpy
 pip install blist
