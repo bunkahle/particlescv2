@@ -37,10 +37,11 @@ Requirements
 The code currently only runs under Python 2.7. Ports to Python 3 are welcome.
 If you want to compile the pyx file with cython you also need cython of course.
 The blist is required for running as well as numpy and opencv2.
-These libraries can easily be installed with
-pip install numpy
-pip install blist
-pip install opencv-python
+These libraries can easily be installed with ::
+
+    pip install numpy
+    pip install blist
+    pip install opencv-python
 
 optionally
 pip install cython
