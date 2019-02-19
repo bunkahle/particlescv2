@@ -1,5 +1,5 @@
 # particlescv2.pyx
-
+from __future__ import print_function
 from libc.math cimport sqrt, pow, cos, sin
 from blist import blist
 import cv2, random, sys
@@ -351,7 +351,7 @@ class Particle:
             # display.blit(self.image, (self.pos[0] - size[1], self.pos[1] - size[1]))
             size = self.image.shape
             x, y = self.pos[0] - size[1], self.pos[1] - size[1]
-            # print x, y
+            # print(x, y)
             display = self.Paste(display, self.image, x, y)
     
     def Paste(self, mother, child, x, y):
@@ -1289,8 +1289,8 @@ class VortexGravity(PointGravity):
         try:
             self.alreadyshownerror
         except:
-            print "WARNING: VortexGravity relies upon particle velocities as well as positions, and so its \
-                force can only be obtained using GetForceOnParticle([PyIgnition particle object]).".replace("\t", "")
+            print("WARNING: VortexGravity relies upon particle velocities as well as positions, and so its \
+                force can only be obtained using GetForceOnParticle([PyIgnition particle object]).".replace("\t", ""))
             self.alreadyshownerror = True
         
         return [0.0, 0.0]

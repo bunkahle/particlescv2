@@ -2,9 +2,13 @@
 particlescv2
 ============
 
-particlescv2 is a port of the Python PyGame library PyIgniton for
+particlescv2 is a port of the Particles Python PyGame library PyIgniton for
 OpenCV2. The original PyIgntion files can be found at 
 `https://launchpad.net/pyignition <https://launchpad.net/pyignition>`_. 
+
+The original repository for particlescv2 is at:
+`Github <https://github.com/bunkahle/particlescv2>`_.
+
 Setup the library by running setup_cython.py::
 
     setup_cython.py build_ext --inplace
@@ -31,11 +35,16 @@ There are several examples for running the library in the Examples section.
 
 Requirements
 ============
+The code currently only runs under Python 2.7. Ports to Python 3 are welcome.
+If you want to compile the pyx file with cython you also need cython of course.
 The blist is required for running as well as numpy and opencv2.
 These libraries can easily be installed with
 pip install numpy
 pip install blist
 pip install opencv-python
+
+optionally
+pip install cython
 
 opencv2 and numpy windows binaries and setup wheels can also be downloaded from
 Christoph Gohlkes Python page for windows:

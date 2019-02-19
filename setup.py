@@ -9,8 +9,9 @@ setup(
     description='Port of the Pygame PyIgnition 1.0 Particles Engine library to OpenCV2',
     license='MIT',
     py_modules=['particlescv2'],
+    python_requires='>=2.7,<3',
     url='https://github.com/bunkahle/particlescv2',
     long_description=open('README.txt').read(),
     platforms = ['any'],
-    install_requires=['setuptools', 'cython', 'blist', 'numpy', 'cv2']
+    install_requires=['blist', 'numpy', 'opencv-python']
 )

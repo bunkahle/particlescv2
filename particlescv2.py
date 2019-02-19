@@ -1,5 +1,5 @@
 # particles.py
-
+from __future__ import print_function
 from math import sqrt, pow
 from blist import blist
 import cv2, math, random, sys
@@ -85,7 +85,7 @@ def dotproduct2d(v1, v2):
     return ((v1[0] * v2[0]) + (v1[1] * v2[1]))
 
 def magnitude(vec):
-    # print "type(vec)", type(vec)
+    # print("type(vec)", type(vec))
     try:
         return sqrt(vec[0] ** 2 + vec[1] ** 2)
     except:
@@ -348,7 +348,7 @@ class Particle:
             # display.blit(self.image, (self.pos[0] - size[1], self.pos[1] - size[1]))
             size = self.image.shape
             x, y = self.pos[0] - size[1], self.pos[1] - size[1]
-            # print x, y
+            # print(x, y)
             display = self.Paste(display, self.image, x, y)
     
     def Paste(self, mother, child, x, y):
@@ -1285,8 +1285,8 @@ class VortexGravity(PointGravity):
         try:
             self.alreadyshownerror
         except:
-            print "WARNING: VortexGravity relies upon particle velocities as well as positions, and so its \
-                force can only be obtained using GetForceOnParticle([PyIgnition particle object]).".replace("\t", "")
+            print("WARNING: VortexGravity relies upon particle velocities as well as positions, and so its \
+                force can only be obtained using GetForceOnParticle([PyIgnition particle object]).".replace("\t", ""))
             self.alreadyshownerror = True
         
         return [0.0, 0.0]
@@ -1709,7 +1709,7 @@ def main():
         i += 1
         # for event in pygame.event.get():
         #   if event.type == pygame.QUIT:
-        k = cv2.waitKey(1)
+        k = cv2.waitKey(30)
         if k == 27:
             sys.exit()
         # screen.fill((0, 0, 0))
