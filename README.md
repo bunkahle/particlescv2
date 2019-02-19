@@ -4,10 +4,10 @@ particlescv2
 
 particlescv2 is a port of the Particles Python PyGame library PyIgniton for
 OpenCV2. The original PyIgntion files can be found at 
-`https://launchpad.net/pyignition <https://launchpad.net/pyignition>`_. 
+https://launchpad.net/pyignition
 
 The original repository for particlescv2 is at:
-`Github <https://github.com/bunkahle/particlescv2>`_.
+Github https://github.com/bunkahle/particlescv2 
 
 Setup the library by running setup_cython.py::
 
