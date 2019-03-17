@@ -53,6 +53,7 @@ https://www.lfd.uci.edu/~gohlke/pythonlibs/
 Changes
 =======
 1.0 initial release for Python2
+
 1.1 routine now also runs in Python3, removed old cv2 Syntax
 
 License
