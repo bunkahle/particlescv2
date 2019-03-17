@@ -1,5 +1,6 @@
 # particlescv2.pyx
 from __future__ import print_function
+from builtins import next
 from libc.math cimport sqrt, pow, cos, sin
 from blist import blist
 import cv2, random, sys
@@ -63,11 +64,11 @@ def InterpolateKeyframes(curframe, variables, keyframes):
     if not ('interpolationtype' in variables):
         variables['interpolationtype'] = "linear"
     keys = variables.keys()
-    for i in xrange(len(keys)):  # Determine current keyframe and next one for this variable
+    for i in range(len(keys)):  # Determine current keyframe and next one for this variable
         key = keys[i]
         curkeyframe = None
         nextkeyframe = None
-        for i in xrange(len(keyframes)):
+        for i in range(len(keyframes)):
             try:
                 frame = keyframes[i]
                 if (frame.variables[key] != None):  # If the current keyframe has a keyed value for the current variable
@@ -112,7 +113,7 @@ def CreateKeyframe(parentframes, frame, variables):
     newframe = Keyframe(frame, variables)
     # Look for duplicate keyframes and copy other defined variables
     try:
-        oldkey = (keyframe for keyframe in parentframes if keyframe.frame == frame).next()
+        oldkey = next(keyframe for keyframe in parentframes if keyframe.frame == frame)
     except StopIteration:
         oldkey = None
     if oldkey != None:
@@ -327,13 +328,13 @@ class Particle:
                 linevec = [(self.velocity[0] / velocitymagoverlength), (self.velocity[1] / velocitymagoverlength)]
                 endpoint = [self.pos[0] + linevec[0], self.pos[1] + linevec[1]]
                 # pygame.draw.aaline(display, self.colour, self.pos, endpoint)
-                # cv.Line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour, lineType=cv.CV_AA)
+                # cv.Line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour)
                 cv2.line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour)
             
         elif self.drawtype == DRAWTYPE_SCALELINE:  # Scaling line (scales with velocity)
             endpoint = [self.pos[0] + self.velocity[0], self.pos[1] + self.velocity[1]]
             # pygame.draw.aaline(display, self.colour, self.pos, endpoint)
-            # cv.Line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour, lineType=cv.CV_AA)
+            # cv.Line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour)
             cv2.line(display, (int(self.pos[0]), int(self.pos[1])), (int(endpoint[0]), int(endpoint[1])), self.colour)
             
         elif self.drawtype == DRAWTYPE_BUBBLE:  # Bubble
@@ -449,7 +450,7 @@ class ParticleSource:
     def PreCalculateParticles(self):
         self.particlecache = []  # Clear the cache
         # Interpolate the particle variables for each frame of its life
-        for i in xrange(0, self.particlelife + 1):
+        for i in range(0, self.particlelife + 1):
             vars = InterpolateKeyframes(i, {'colour_r':0, 'colour_g':0, 'colour_b':0, 'radius':0, 'length':0}, self.particlekeyframes)
             self.particlecache.append(vars)
     
@@ -1623,7 +1624,7 @@ class BoundaryLine(Obstacle):
             self.hascontacts = True
         
         # pygame.draw.aalines(display, self.colour, True, self.edgecontacts)
-        # cv.Line(display, (int(self.edgecontacts[0][0]), int(self.edgecontacts[0][1])), (int(self.edgecontacts[1][0]), int(self.edgecontacts[1][1])), self.colour, lineType=cv.CV_AA)
+        # cv.Line(display, (int(self.edgecontacts[0][0]), int(self.edgecontacts[0][1])), (int(self.edgecontacts[1][0]), int(self.edgecontacts[1][1])), self.colour)
         cv2.line(display, (int(self.edgecontacts[0][0]), int(self.edgecontacts[0][1])), (int(self.edgecontacts[1][0]), int(self.edgecontacts[1][1])), self.colour)
     
     def Update(self):

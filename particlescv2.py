@@ -1,5 +1,6 @@
 # particles.py
 from __future__ import print_function
+from builtins import next
 from math import sqrt, pow
 from blist import blist
 import cv2, math, random, sys
@@ -57,12 +58,12 @@ def InterpolateKeyframes(curframe, variables, keyframes):
     finalvariables = {}
     if not ('interpolationtype' in variables):
         variables['interpolationtype'] = "linear"
-    keys = variables.keys()
-    for i in xrange(len(keys)):  # Determine current keyframe and next one for this variable
+    keys = list(variables.keys())
+    for i in range(len(keys)):  # Determine current keyframe and next one for this variable
         key = keys[i]
         curkeyframe = None
         nextkeyframe = None
-        for i in xrange(len(keyframes)):
+        for i in range(len(keyframes)):
             try:
                 frame = keyframes[i]
                 if (frame.variables[key] != None):  # If the current keyframe has a keyed value for the current variable
@@ -108,7 +109,7 @@ def CreateKeyframe(parentframes, frame, variables):
     newframe = Keyframe(frame, variables)
     # Look for duplicate keyframes and copy other defined variables
     try:
-        oldkey = (keyframe for keyframe in parentframes if keyframe.frame == frame).next()
+        oldkey = next(keyframe for keyframe in parentframes if keyframe.frame == frame)
     except StopIteration:
         oldkey = None
     if oldkey != None:
@@ -446,7 +447,7 @@ class ParticleSource:
     def PreCalculateParticles(self):
         self.particlecache = []  # Clear the cache
         # Interpolate the particle variables for each frame of its life
-        for i in xrange(0, self.particlelife + 1):
+        for i in range(0, self.particlelife + 1):
             vars = InterpolateKeyframes(i, {'colour_r':0, 'colour_g':0, 'colour_b':0, 'radius':0, 'length':0}, self.particlekeyframes)
             self.particlecache.append(vars)
     
